@@ -7,20 +7,8 @@
 </head>
 <body>
     <button id="boton-modo-oscuro" aria-label="Cambiar modo">
-        <svg id="icono-sol" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-        <svg id="icono-luna" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon" style="display: none;">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3A7 7 0 0 0 21 12.79z"></path>
-        </svg>
+        <span id="icono-sol">☀️</span>
+        <span id="icono-luna" style="display: none;">🌙</span>
     </button>
     
     <h1>¡Vamos a jugar al Tateti!</h1>
@@ -34,29 +22,28 @@
     <div id="contenedor-juego-y-marcador">
         <div id="contenido-juego">
             <div id="contenedor-juego">
-                </div>
+            </div>
             <div id="mensaje-estado"></div>
             <button id="boton-reiniciar">Reiniciar</button>
         </div>
 
         <div id="marcador-resultados">
             <h2>Marcador</h2>
-            <table>
-                <tr>
-                    <th>Jugador</th>
-                    <th>Victorias</th>
-                    <th>Empates</th>
-                </tr>
-                <tr>
-                    <td>X</td>
-                    <td id="victorias-x">0</td>
-                    <td rowspan="2" id="empates">0</td>
-                </tr>
-                <tr>
-                    <td>O</td>
-                    <td id="victorias-o">0</td>
-                </tr>
-            </table>
+            <div class="fila-marcador encabezado-marcador">
+                <p>Jugador</p>
+                <p>Victorias</p>
+                <p>Empates</p>
+            </div>
+            <div class="fila-marcador">
+                <p>X</p>
+                <p id="victorias-x">0</p>
+                <p id="empates">0</p>
+            </div>
+            <div class="fila-marcador">
+                <p>O</p>
+                <p id="victorias-o">0</p>
+                <p></p>
+            </div>
             <button id="boton-reiniciar-marcador">Reiniciar Marcador</button>
         </div>
     </div>

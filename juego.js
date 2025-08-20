@@ -1,4 +1,3 @@
-// Constantes para los elementos del DOM
 const contenedorJuego = document.getElementById('contenedor-juego');
 const mensajeEstado = document.getElementById('mensaje-estado');
 const selectorJugador = document.getElementById('selector-jugador');
@@ -12,26 +11,22 @@ const contenedorJuegoYMarcador = document.getElementById('contenedor-juego-y-mar
 const botonReiniciarMarcador = document.getElementById('boton-reiniciar-marcador');
 const botonModoOscuro = document.getElementById('boton-modo-oscuro');
 
-// Estado del juego
 let tablero = ['', '', '', '', '', '', '', '', ''];
 let jugadorActual = '';
 let juegoActivo = false;
 
-// Marcador de resultados
 let marcador = {
     victoriasX: 0,
     victoriasO: 0,
     empates: 0
 };
 
-// Mensajes de la aplicación
 const mensajes = {
     ganador: () => `¡El jugador ${jugadorActual} ha ganado!`,
     empate: () => `¡El juego ha terminado en empate!`,
     turno: () => `Es el turno del jugador ${jugadorActual}`
 };
 
-// Función para crear el tablero
 function crearTablero() {
     for (let i = 0; i < 9; i++) {
         const casilla = document.createElement('div');
@@ -42,7 +37,6 @@ function crearTablero() {
     }
 }
 
-// Función para manejar los clics en las casillas
 function manejarClicCasilla(evento) {
     const casillaClickeada = evento.target;
     const indiceCasillaClickeada = parseInt(casillaClickeada.dataset.indice);
@@ -53,7 +47,7 @@ function manejarClicCasilla(evento) {
 
     tablero[indiceCasillaClickeada] = jugadorActual;
     casillaClickeada.textContent = jugadorActual;
-    
+
     if (jugadorActual === 'X') {
         casillaClickeada.classList.add('x');
     } else {
@@ -63,7 +57,6 @@ function manejarClicCasilla(evento) {
     verificarResultado();
 }
 
-// Lógica de verificación de resultados
 function verificarResultado() {
     const condicionesVictoria = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8],
@@ -94,7 +87,7 @@ function verificarResultado() {
         mensajeEstado.textContent = mensajes.ganador();
         mensajeEstado.classList.add('ganador');
         juegoActivo = false;
-        
+
         if (jugadorActual === 'X') {
             marcador.victoriasX++;
         } else {
@@ -102,7 +95,6 @@ function verificarResultado() {
         }
         actualizarMarcador();
 
-        // Resalta las casillas ganadoras
         casillasGanadoras.forEach(indice => {
             const casilla = contenedorJuego.querySelector(`[data-indice='${indice}']`);
             casilla.classList.add('ganadora');
@@ -116,10 +108,10 @@ function verificarResultado() {
     if (rondaEmpatada) {
         mensajeEstado.textContent = mensajes.empate();
         juegoActivo = false;
-        
+
         marcador.empates++;
         actualizarMarcador();
-        
+
         botonReiniciar.style.display = 'block';
         return;
     }
@@ -128,14 +120,12 @@ function verificarResultado() {
     mensajeEstado.textContent = mensajes.turno();
 }
 
-// Función para actualizar el marcador en la pantalla
 function actualizarMarcador() {
     victoriasXElemento.textContent = marcador.victoriasX;
     victoriasOElemento.textContent = marcador.victoriasO;
     empatesElemento.textContent = marcador.empates;
 }
 
-// Función para iniciar el juego con el jugador seleccionado
 function iniciarJuego(jugador) {
     jugadorActual = jugador;
     juegoActivo = true;
@@ -145,7 +135,6 @@ function iniciarJuego(jugador) {
     crearTablero();
 }
 
-// Función para reiniciar el juego
 function reiniciarJuego() {
     tablero = ['', '', '', '', '', '', '', '', ''];
     juegoActivo = false;
@@ -157,7 +146,6 @@ function reiniciarJuego() {
     mensajeEstado.classList.remove('ganador');
 }
 
-// Función para reiniciar solo el marcador
 function reiniciarMarcador() {
     marcador.victoriasX = 0;
     marcador.victoriasO = 0;
@@ -165,12 +153,10 @@ function reiniciarMarcador() {
     actualizarMarcador();
 }
 
-// Función para cambiar el modo (oscuro/claro)
 function cambiarModo() {
     document.body.classList.toggle('modo-oscuro');
 }
 
-// Event Listeners para los botones de selección y reinicio
 botonX.addEventListener('click', () => iniciarJuego('X'));
 botonO.addEventListener('click', () => iniciarJuego('O'));
 botonReiniciar.addEventListener('click', reiniciarJuego);

@@ -1,0 +1,273 @@
+/* Variables de color para los temas */
+:root {
+    --color-fondo: #f0f0f0;
+    --color-texto: #333;
+    --color-casilla: #fff;
+    --color-borde: #333;
+    --color-ganadora: #7CFC00;
+    --color-boton-principal: #4CAF50;
+    --color-texto-boton-principal: white;
+    --color-boton-secundario: #007BFF;
+    --color-texto-boton-secundario: white;
+    --color-boton-reiniciar-marcador: #dc3545;
+    --color-texto-boton-reiniciar-marcador: white;
+}
+
+/* Estilos para el modo oscuro */
+.modo-oscuro {
+    --color-fondo: #1e1e1e;
+    --color-texto: #f0f0f0;
+    --color-casilla: #333;
+    --color-borde: #f0f0f0;
+    --color-ganadora: #a3ff77;
+    --color-boton-principal: #5cb85c;
+    --color-texto-boton-principal: white;
+    --color-boton-secundario: #5bc0de;
+    --color-texto-boton-secundario: white;
+    --color-boton-reiniciar-marcador: #d9534f;
+    --color-texto-boton-reiniciar-marcador: white;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1 {
+    color: var(--color-texto);
+}
+
+#selector-jugador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#selector-jugador p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: var(--color-texto);
+}
+
+#selector-jugador button {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border: none;
+    background-color: var(--color-boton-principal);
+    color: var(--color-texto-boton-principal);
+    border-radius: 5px;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover más intenso para los botones de selección de jugador */
+#selector-jugador button:hover {
+    filter: brightness(80%);
+}
+
+#contenedor-juego-y-marcador {
+    display: none;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+#contenido-juego {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#contenedor-juego {
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    grid-gap: 8px;
+    margin: 20px 0;
+}
+
+.casilla {
+    width: 60px;
+    height: 60px;
+    background-color: var(--color-casilla);
+    border: 2px solid var(--color-borde);
+    color: var(--color-texto);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.casilla.x {
+    color: red;
+}
+
+.casilla.circulo {
+    color: blue;
+}
+
+.casilla.ganadora {
+    background-color: var(--color-ganadora);
+    animation: resplandor 1.5s infinite;
+}
+
+@keyframes resplandor {
+    0% {
+        box-shadow: 0 0 10px rgba(124, 252, 0, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(124, 252, 0, 1);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(124, 252, 0, 0.5);
+    }
+}
+
+.modo-oscuro .casilla.ganadora {
+    background-color: var(--color-ganadora);
+    animation: resplandor-oscuro 1.5s infinite;
+}
+
+@keyframes resplandor-oscuro {
+    0% {
+        box-shadow: 0 0 10px rgba(163, 255, 119, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(163, 255, 119, 1);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(163, 255, 119, 0.5);
+    }
+}
+
+#mensaje-estado.ganador {
+    animation: parpadeo 1s infinite;
+}
+
+@keyframes parpadeo {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#mensaje-estado {
+    font-size: 1.5em;
+    margin-top: 10px;
+    color: var(--color-texto);
+}
+
+#boton-reiniciar {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border: none;
+    background-color: var(--color-boton-secundario);
+    color: var(--color-texto-boton-secundario);
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover más intenso para el botón de reiniciar */
+#boton-reiniciar:hover {
+    filter: brightness(80%);
+}
+
+#marcador-resultados {
+    margin-top: 0;
+    font-size: 1.2em;
+    text-align: center;
+    color: var(--color-texto);
+}
+
+#marcador-resultados table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+#marcador-resultados th,
+#marcador-resultados td {
+    border: 1px solid var(--color-borde);
+    padding: 8px;
+}
+
+#marcador-resultados th {
+    background-color: var(--color-borde);
+    color: var(--color-fondo);
+}
+
+#boton-reiniciar-marcador {
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 0.8em;
+    cursor: pointer;
+    border: none;
+    background-color: var(--color-boton-reiniciar-marcador);
+    color: var(--color-texto-boton-reiniciar-marcador);
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover más intenso para el botón de reiniciar marcador */
+#boton-reiniciar-marcador:hover {
+    filter: brightness(80%);
+}
+
+/* Estilos para el botón de modo oscuro */
+#boton-modo-oscuro {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: 2px solid var(--color-borde);
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#boton-modo-oscuro svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: var(--color-texto);
+    transition: stroke 0.3s ease;
+}
+
+#boton-modo-oscuro:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.modo-oscuro #boton-modo-oscuro:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.modo-oscuro #icono-sol {
+    display: none;
+}
+
+.modo-oscuro #icono-luna {
+    display: block !important;
+}

@@ -7,7 +7,7 @@ function crearVentanaPrincipal() {
         height: 600,
         minWidth: 800,
         minHeight: 600,
-        title: 'Tateti Electron App',
+        title: 'Tatetí Electron App',
         icon: path.join(__dirname, 'assets', 'icon.png'),
         webPreferences: {
             nodeIntegration: true,

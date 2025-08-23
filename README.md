@@ -1,11 +1,11 @@
-Documentación del Proyecto: Tateti Electron App
+Documentación del Proyecto: Tatetí Electron App
 Nombre del Proyecto
- Tateti Electron App
+ Tatetí Electron App
 Descripción del Proyecto:
- Esta aplicación de escritorio multiplataforma desarrolla el clásico juego Tateti, también conocido como Tres en línea. Fue creada utilizando el framework Electron, que permite combinar tecnologías web (HTML, CSS, JavaScript) en un ejecutable de escritorio, brindando una experiencia de usuario nativa y fluida.
+ Esta aplicación de escritorio multiplataforma desarrolla el clásico juego Tatetí, también conocido como Tres en línea. Fue creada utilizando el framework Electron, que permite combinar tecnologías web (HTML, CSS, JavaScript) en un ejecutable de escritorio, brindando una experiencia de usuario nativa y fluida.
  
 Funcionalidades del Juego: El proyecto incluye las siguientes características:
-•	Juego Clásico: Ofrece la jugabilidad tradicional de Tateti en un tablero de 3x3 para dos jugadores, 'X' y 'O'.
+•	Juego Clásico: Ofrece la jugabilidad tradicional de Tatetí en un tablero de 3x3 para dos jugadores, 'X' y 'O'.
 •	Selección de Jugador: Permite a los usuarios elegir la ficha ('X' o 'O') al inicio de cada partida.
 •	Registro de Puntuación: Cuenta con un marcador que registra las victorias de ambos jugadores, así como la cantidad de empates.
 •	Alternancia de Temas: Dispone de un botón para cambiar entre un diseño claro y un diseño oscuro, adaptándose a las preferencias del usuario.

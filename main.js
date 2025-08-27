@@ -1,43 +1,31 @@
-const { app, BrowserWindow, nativeTheme } = require('electron');
+const { app, BrowserWindow, Menu } = require('electron');
 const path = require('path');
 
-function crearVentanaPrincipal() {
-    const ventanaPrincipal = new BrowserWindow({
-        width: 800,
-        height: 600,
-        minWidth: 800,
-        minHeight: 600,
-        title: 'Tatetí Electron App',
-        icon: path.join(__dirname, 'assets', 'icon.png'),
-        webPreferences: {
-            nodeIntegration: true,
-            contextIsolation: false,
-            preload: path.join(__dirname, 'precarga.js')
-        }
-    });
+function createWindow() {
+  const mainWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    icon: path.join(__dirname, 'assets', 'tateti.ico'),
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true,
+      contextIsolation: false
+    }
+  });
 
-    // Deshabilitar el menú por defecto
-    ventanaPrincipal.setMenuBarVisibility(false);
+  mainWindow.loadFile('index.html');
 
-    ventanaPrincipal.loadFile('index.html');
-
-    nativeTheme.on('updated', () => {
-        ventanaPrincipal.webContents.send('theme-changed', nativeTheme.shouldUseDarkColors);
-    });
+  Menu.setApplicationMenu(null);
 }
 
 app.whenReady().then(() => {
-    crearVentanaPrincipal();
+  createWindow();
 
-    app.on('activate', () => {
-        if (BrowserWindow.getAllWindows().length === 0) {
-            crearVentanaPrincipal();
-        }
-    });
+  app.on('activate', function () {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
 });
 
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-        app.quit();
-    }
-})
+app.on('window-all-closed', function () {
+  if (process.platform !== 'darwin') app.quit();
+});
